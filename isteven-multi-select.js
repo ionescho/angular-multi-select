@@ -492,7 +492,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
             // update $scope.outputModel
             $scope.refreshOutputModel = function() {            
                 
-                $scope.outputModel = [];
+                $scope.outputModel.length = 0;
 
                 angular.forEach( $scope.localModel, function( value, key ) {
                     if ( typeof value !== 'undefined' ) {                   
