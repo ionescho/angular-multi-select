@@ -51,6 +51,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
             isDisabled      : '=',
             itemLabel       : '@',
             maxLabels       : '@',
+            keepInitialLabel: '@',
             orientation     : '@',
             selectionMode   : '@',    
             minSearchLength : '@',  // 3.0.0 - OK                 
@@ -524,7 +525,12 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                     // https://github.com/isteven/angular-multi-select/pull/19                    
                     $scope.varButtonLabel = $scope.lang.nothingSelected;
                 }
-                else {                
+                else {    
+
+                    if(!!$scope.keepInitialLabel && $scope.keepInitialLabel==1){
+                        $scope.varButtonLabel = $scope.lang.nothingSelected + ' ';       
+                    }
+
                     var tempMaxLabels = $scope.outputModel.length;
                     if ( typeof $scope.maxLabels !== 'undefined' && $scope.maxLabels !== '' ) {
                         tempMaxLabels = $scope.maxLabels;
