@@ -662,9 +662,11 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                     angular.element( clickedEl ).addClass( 'buttonClicked' );       
 
                     // Attach change event listener on the input filter. 
-                    // We need this because ng-change is apparently not an event listener.                    
-                    angular.element( document ).on( 'click', $scope.externalClickListener );
-                    angular.element( document ).on( 'keydown', $scope.keyboardListener );  
+                    // We need this because ng-change is apparently not an event listener.
+                    $timeout(function(){
+                        angular.element( document ).on( 'click', $scope.externalClickListener );
+                        angular.element( document ).on( 'keydown', $scope.keyboardListener );  
+                    });
 
                     // to get the initial tab index, depending on how many helper elements we have. 
                     // priority is to always focus it on the input filter                                                                
